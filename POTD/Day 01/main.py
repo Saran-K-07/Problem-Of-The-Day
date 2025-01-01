@@ -1,16 +1,41 @@
-# Input: arr[] = ["listen", "silent", "enlist", "abc", "cab", "bac", "rat", "tar", "art"]
-# Output: [["abc", "cab", "bac"], ["listen", "silent", "enlist"], ["rat", "tar", "art"]]
-
+#User function Template for python3
 from collections import defaultdict
 
-def group_anagrams(strs):
-        anagrams = defaultdict(list)
-        for s in strs:
+class Solution:
+
+    def anagrams(self, arr):
+        '''
+        words: list of word
+        n:      no of words
+        return : list of group of anagram {list will be sorted in driver code (not word in grp)}
+        '''
+
+        ana = defaultdict(list)
+        for s in arr:
             key = "".join(sorted(s))
-            anagrams[key].append(s)
+            ana[key].append(s)
             
-        return list(anagrams.values())
+        return list(ana.values())
         
-arr = ["listen", "silent", "enlist", "abc", "cab", "bac", "rat", "tar", "art"]
-ans = group_anagrams(arr)
-print(ans)
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+if __name__ == '__main__':
+    t = int(input())
+    for tcs in range(t):
+        words = input().split()
+
+        ob = Solution()
+        ans = ob.anagrams(words)
+
+        for grp in sorted(ans):
+            for word in grp:
+                print(word, end=' ')
+            print()
+
+        print("~")
+
+# } Driver Code Ends
